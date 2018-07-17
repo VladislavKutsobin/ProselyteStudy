@@ -3,6 +3,8 @@ package net.proselyte.MyCollectionTask1;
 import java.util.*;
 
 public class MyCollection extends ArrayList<Integer> {
+    private static final int NOT_FOUND_ELEMENT = 404;
+
     //Search element by index
     public int GetValue(int index) {
         return get(index);
@@ -12,7 +14,7 @@ public class MyCollection extends ArrayList<Integer> {
         if(contains(value)) {
             return indexOf(value);
         }
-        else return 404;
+        else return NOT_FOUND_ELEMENT;
     }
 
     //Overriding method add .
@@ -30,10 +32,13 @@ public class MyCollection extends ArrayList<Integer> {
     //  2)changing elemnt like that : arr[i] = arr[i] - integer
 
     public int Remove(Integer integer) {
-        super.remove(integer);
-        for(int i=0; i<size(); i++){
-            set(i, get(i) - integer);
+        if(this.contains(integer)) {
+            super.remove(integer);
+            for (int i = 0; i < size(); i++) {
+                set(i, get(i) - integer);
+            }
         }
+        else return NOT_FOUND_ELEMENT;
         return integer;
     }
 
