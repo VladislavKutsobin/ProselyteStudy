@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        MyCollection mc = new MyCollection(0);
+        MovingQueue mc = new MovingQueue(20);
         for(int i=0; i<18; i++) {
             mc.offer(i);
         }
