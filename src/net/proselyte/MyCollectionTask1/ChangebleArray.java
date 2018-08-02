@@ -1,19 +1,22 @@
 package net.proselyte.MyCollectionTask1;
 
 import java.util.*;
+import java.lang.*;
 
 public class ChangebleArray extends ArrayList<Integer> {
 
     //Search element by index
-    public int getValue(int index) {
-        return get(index);
+    public int getValue(int index) throws IndexOutOfBoundsException {
+        if((index < 0) || ((size()-1) < index))
+            throw new IndexOutOfBoundsException("Exception! No such index in array!");
+        else return get(index);
     }
     //Search by value
-    public int getIndex(int value) {
+    public int getIndex(int value) throws ValueOutOfException {
         if(contains(value)) {
             return indexOf(value);
         }
-        else return -1;
+        else throw new ValueOutOfException();
     }
 
     //Overriding method add .
@@ -30,48 +33,62 @@ public class ChangebleArray extends ArrayList<Integer> {
     //  1)remove element by value(integer)
     //  2)changing elemnt like that : arr[i] = arr[i] - integer
 
-    public int remove(Integer integer) {
+    public int rEmove (Integer integer) throws ValueOutOfException, IndexOutOfBoundsException {
         if(this.contains(integer)) {
-            super.remove(integer);
+            super.remove(getIndex(integer));
             for (int i = 0; i < size(); i++) {
                 set(i, get(i) - integer);
             }
+            return integer;
         }
-        else return -1;
-        return integer;
+        else throw new IndexOutOfBoundsException("Exception! No such index in array!");
     }
 
     //Find min value in array
-    public int minValue() {
-        int min = getValue(0);
-        for(int i=1; i<size(); i++){
-            if(getValue(i) < min) min = getValue(i);
+    public int minValue() throws EmptyArrayException {
+        if(this.isEmpty()) {
+            throw new EmptyArrayException();
         }
-        return min;
+        else {
+            int min = getValue(0);
+
+            for (int i = 1; i < size(); i++) {
+                if (getValue(i) < min) min = getValue(i);
+            }
+            return min;
+        }
     }
 
     //Find max value in array
-    public int maxValue() {
-        int max = 0;
-        for(int i=0; i<size(); i++) {
-            if(getValue(i) > max) max = getValue(i);
+    public int maxValue() throws EmptyArrayException {
+        if(this.isEmpty()) throw new EmptyArrayException();
+        else {
+            int max = getValue(0);
+            for (int i = 0; i < size(); i++) {
+                if (getValue(i) > max) max = getValue(i);
+            }
+            return max;
         }
-        return max;
     }
 
     //Find average of array elements
-    public double getAverage() {
-        int sum = 0;
-
-        for(int i=0; i<size(); i++) {
-            sum += getValue(i);
+    public double getAverage() throws EmptyArrayException {
+        if(this.isEmpty()) {
+            throw new EmptyArrayException();
         }
+        else {
+            int sum = 0;
+            for(int i=0; i<size(); i++) {
+                sum += getValue(i);
+            }
         return (double) sum / size();
+        }
     }
 
     //Show collection
     public void getArray() {
-        System.out.println("Сейчас массив выглядит так: " + this);
+        if(this.isEmpty()) System.out.println("Массив пуст!");
+        else System.out.println("Сейчас массив выглядит так: " + this);
     }
 }
 
