@@ -11,10 +11,9 @@ public class MovingQueue extends PriorityQueue<Object> {
         this.CUSTOM_CAPACITY = DEFAUlT_CAPACITY;
     }
 
-    public MovingQueue(int CUSTOM_CAPACITY) {
+    public MovingQueue(int CUSTOM_CAPACITY) throws IllegalCapacityException {
         if(CUSTOM_CAPACITY < 1) {
-            this.CUSTOM_CAPACITY = 16;
-            this.queue = new Object[this.CUSTOM_CAPACITY];
+            throw new IllegalCapacityException();
         }
         else {
             this.CUSTOM_CAPACITY = CUSTOM_CAPACITY;
