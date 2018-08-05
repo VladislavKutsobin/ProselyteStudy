@@ -7,6 +7,6 @@ public class IllegalCapacityException extends Exception {
 
     @Override
     public String toString() {
-        return "Can`t create queue...";
+        return super.toString() + " Can`t create queue...";
     }
 }

@@ -6,7 +6,7 @@ public class Runner {
         //input elements
         //mc.add(6);
         //mc.add(9);
-        //mc.add(5);
+        mc.add(5);
         mc.add(14);
         mc.getArray();
         try {
@@ -15,7 +15,7 @@ public class Runner {
             System.out.println(e);
         }
         try {
-            System.out.println("Элемент по значению и его индекс: " + mc.getIndex(28));
+            System.out.println("Элемент по значению и его индекс: " + mc.getIndex(14));
         } catch (ValueOutOfException e) {
             System.out.println(e);
         }
@@ -36,7 +36,7 @@ public class Runner {
             System.out.println(e);
         }
         try {
-            System.out.println("Удаление элемента: " + mc.rEmove(14));
+            System.out.println("Удаление элемента: " + mc.removeWithDecrement(14));
         } catch (ValueOutOfException e) {
             System.out.println(e);
         } catch (IndexOutOfBoundsException e) {

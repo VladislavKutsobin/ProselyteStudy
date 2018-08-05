@@ -13,10 +13,10 @@ public class ChangebleArray extends ArrayList<Integer> {
     }
     //Search by value
     public int getIndex(int value) throws ValueOutOfException {
-        if(contains(value)) {
-            return indexOf(value);
+        if(!contains(value)) {
+            throw new ValueOutOfException();
         }
-        else throw new ValueOutOfException();
+        else return indexOf(value);
     }
 
     //Overriding method add .
@@ -33,15 +33,17 @@ public class ChangebleArray extends ArrayList<Integer> {
     //  1)remove element by value(integer)
     //  2)changing elemnt like that : arr[i] = arr[i] - integer
 
-    public int rEmove (Integer integer) throws ValueOutOfException, IndexOutOfBoundsException {
-        if(this.contains(integer)) {
+    public int removeWithDecrement (Integer integer) throws ValueOutOfException, IndexOutOfBoundsException {
+        if(!this.contains(integer)) {
+            throw new IndexOutOfBoundsException("Exception! No such index in array!");
+        }
+        else {
             super.remove(getIndex(integer));
             for (int i = 0; i < size(); i++) {
                 set(i, get(i) - integer);
             }
             return integer;
         }
-        else throw new IndexOutOfBoundsException("Exception! No such index in array!");
     }
 
     //Find min value in array
@@ -61,7 +63,9 @@ public class ChangebleArray extends ArrayList<Integer> {
 
     //Find max value in array
     public int maxValue() throws EmptyArrayException {
-        if(this.isEmpty()) throw new EmptyArrayException();
+        if(this.isEmpty()) {
+            throw new EmptyArrayException();
+        }
         else {
             int max = getValue(0);
             for (int i = 0; i < size(); i++) {
