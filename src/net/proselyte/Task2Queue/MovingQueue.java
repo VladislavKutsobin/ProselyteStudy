@@ -23,9 +23,9 @@ public class MovingQueue extends PriorityQueue<Object> {
         //this.CUSTOM_CAPACITY = CUSTOM_CAPACITY;
     }
 
+
     @Override
     public boolean offer(Object o) {
-
         if(size() >= this.CUSTOM_CAPACITY) {
             super.remove();
         }
