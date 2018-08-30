@@ -36,7 +36,7 @@ public class Runner {
             System.out.println(e);
         }
         try {
-            System.out.println("Удаление элемента: " + mc.removeWithDecrement(14));
+            System.out.println("Удаление элемент: " + mc.removeWithDecrement(14));
         } catch (ValueOutOfException e) {
             System.out.println(e);
         } catch (IndexOutOfBoundsException e) {
