@@ -41,7 +41,7 @@ public class SequenceInputStreamDemo {
                 System.out.print((char) c);
             }
         } catch (NullPointerException e) {
-            System.out.println("Ошибка открытия файла");
+            System.out.println("Ошибка1 открытия файла");
         } catch (IOException e) {
             System.out.println("Ошибка ввода-вывода " + e);
         } finally {
