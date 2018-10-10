@@ -35,7 +35,7 @@ public class FileProcessing implements Runnable{
 }
 //==============================================================================
 class FileThread{
-    File folder = new File("testDirectory");
+    File folder = new File("src\\FilesForMultiThread");
     File[] listOfFiles = folder.listFiles();
 
     private void fileHandler(){
